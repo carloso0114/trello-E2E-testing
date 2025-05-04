@@ -44,6 +44,7 @@ exports.config = {
     // from the same test should run tests.
     //
     maxInstances: 1,
+    // maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -51,11 +52,24 @@ exports.config = {
     //
     capabilities: [{
         browserName: 'chrome'
-    // }, {
-    //     browserName: 'firefox'
-    // }, {
-    //     browserName: 'safari'
     }],
+    // capabilities: [
+    //     {
+    //         browserName: 'chrome',
+    //         'goog:chromeOptions': {
+    //             args: ['--headless', '--disable-gpu', '--window-size=1920,1080']
+    //         }
+    //     },
+    //     {
+    //         browserName: 'firefox',
+    //         'moz:firefoxOptions': {
+    //             args: ['-headless']
+    //         }
+    //     },
+    //     {
+    //         browserName: 'safari'
+    //     }
+    // ],
 
     //
     // ===================
@@ -116,7 +130,7 @@ exports.config = {
     
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,
