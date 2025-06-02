@@ -11,6 +11,18 @@ class BoardHeaderComponent {
     return $('input[placeholder="Enter a keyword…"]');
   }
 
+  get boardMenuButton() {
+    return $('button[aria-label="Show menu"]');
+  }
+
+  get closeBoardButton() {
+    return $('div=Close board');
+  }
+
+  get confirmCloseBoardButton() {
+    return $('[data-testid="popover-close-board-confirm"]');
+  }
+
   async filterByKeyword(keyword) {
     const input = this.filterKeywordInput;
     await input.setValue(keyword);
