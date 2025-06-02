@@ -23,7 +23,6 @@ describe("Trello - BDD Style with Should", () => {
 
   it("should open the root page of trello and login with my data", async () => {
     await indexPage.open()
-    const size = await browser.getWindowSize();
     const loginButton = await indexPage.headermenu.loginLink;
     const loginForm = loginPage.form;
 
