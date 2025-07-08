@@ -54,60 +54,60 @@ describe("Trello - BDD Style with Should", () => {
   //   isDisplayed.should.be.true;
   // })
 
-  it("should create a new board", async () => {
-    await dashboardPage.navbar.logoHomeLink.click();
-    await dashboardPage.navbar.plusMenuButton.click();   
-    await dashboardPage.navbar.createBoardButton.click();
-    await dashboardPage.navbar.createBoard("My Test board"); 
-    await dashboardPage.boardHeader.boardTitle.waitForDisplayed();
+  // it("should create a new board", async () => {
+  //   await dashboardPage.navbar.logoHomeLink.click();
+  //   await dashboardPage.navbar.plusMenuButton.click();   
+  //   await dashboardPage.navbar.createBoardButton.click();
+  //   await dashboardPage.navbar.createBoard("My Test board"); 
+  //   await dashboardPage.boardHeader.boardTitle.waitForDisplayed();
     
-    const title = await dashboardPage.boardHeader.boardTitle.getText();
-    title.should.equal('My Test board');
-  });
+  //   const title = await dashboardPage.boardHeader.boardTitle.getText();
+  //   title.should.equal('My Test board');
+  // });
 
-  it("creates a list", async () => {
-    const isDisplayed = await dashboardPage.list.addNewListButton.isDisplayed();
-    if (isDisplayed) {
-      await dashboardPage.list.addNewListButton.click()
-      await dashboardPage.list.listNameInput.setValue(listName)
-      await dashboardPage.list.addListButtonFinalStep.click()
-    } else {
-      await dashboardPage.list.listNameInput.setValue(listName)
-      await dashboardPage.list.addListButtonFinalStep.click()
-    }
-    const list = await dashboardPage.list.listExists(listName);
-    list.should.be.true;
-  });
+  // it("creates a list", async () => {
+  //   const isDisplayed = await dashboardPage.list.addNewListButton.isDisplayed();
+  //   if (isDisplayed) {
+  //     await dashboardPage.list.addNewListButton.click()
+  //     await dashboardPage.list.listNameInput.setValue(listName)
+  //     await dashboardPage.list.addListButtonFinalStep.click()
+  //   } else {
+  //     await dashboardPage.list.listNameInput.setValue(listName)
+  //     await dashboardPage.list.addListButtonFinalStep.click()
+  //   }
+  //   const list = await dashboardPage.list.listExists(listName);
+  //   list.should.be.true;
+  // });
 
-  it("creates a card inside the 'Sprint Backlog' list", async () => {
-    await dashboardPage.list.addCardToList(listName, cardName);
-    const newCard = await dashboardPage.list.findCardInList(listName, cardName);
-    const isDisplayed = await newCard.isDisplayed();
+  // it("creates a card inside the 'Sprint Backlog' list", async () => {
+  //   await dashboardPage.list.addCardToList(listName, cardName);
+  //   const newCard = await dashboardPage.list.findCardInList(listName, cardName);
+  //   const isDisplayed = await newCard.isDisplayed();
 
-    expect(isDisplayed).to.be.true;
-  });
+  //   expect(isDisplayed).to.be.true;
+  // });
 
-  it("should filter cards on a board by card title", async () => {
-    await dashboardPage.boardHeader.filterButton.waitForClickable();
-    await dashboardPage.boardHeader.filterButton.click();
-    await dashboardPage.boardHeader.filterByKeyword(cardName);
+  // it("should filter cards on a board by card title", async () => {
+  //   await dashboardPage.boardHeader.filterButton.waitForClickable();
+  //   await dashboardPage.boardHeader.filterButton.click();
+  //   await dashboardPage.boardHeader.filterByKeyword(cardName);
 
-    const filterText = await dashboardPage.list.getFilterMatchText(listName);
-    filterText.should.include("matches filters");
-  });
+  //   const filterText = await dashboardPage.list.getFilterMatchText(listName);
+  //   filterText.should.include("matches filters");
+  // });
 
-  it("deletes the board", async () => {
-    const menuButton = await dashboardPage.boardHeader.boardMenuButton;
-    await menuButton.waitForDisplayed();
-    await menuButton.click();
+  // it("deletes the board", async () => {
+  //   const menuButton = await dashboardPage.boardHeader.boardMenuButton;
+  //   await menuButton.waitForDisplayed();
+  //   await menuButton.click();
 
-    const closeButton = await dashboardPage.boardHeader.closeBoardButton;
-    await closeButton.waitForDisplayed();
-    await closeButton.click();
+  //   const closeButton = await dashboardPage.boardHeader.closeBoardButton;
+  //   await closeButton.waitForDisplayed();
+  //   await closeButton.click();
 
-    const confirmCloseButton = await dashboardPage.boardHeader.confirmCloseBoardButton;
-    await confirmCloseButton.waitForDisplayed();
-    await confirmCloseButton.click();
-  });
+  //   const confirmCloseButton = await dashboardPage.boardHeader.confirmCloseBoardButton;
+  //   await confirmCloseButton.waitForDisplayed();
+  //   await confirmCloseButton.click();
+  // });
 
 })

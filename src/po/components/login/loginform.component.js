@@ -1,6 +1,6 @@
 class LoginFormComponent {
   get emailField() {
-    return $('#username');
+    return $('input[name="username"]')
   }
 
   get continueButton() {
