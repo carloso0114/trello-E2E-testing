@@ -15,6 +15,11 @@ To run eslint
 npx eslint src/specs/test.spec.js 
 
 to run prettier 
-npx prettier src/specs/test.spec.js --write
+npx prettier src/specs/test.spec.js --write\
+
+Optionally use
+npx prettier src/specs/test.spec.js --check
+
+
 
 ![alt text](image.png)
