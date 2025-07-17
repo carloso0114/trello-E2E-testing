@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "@wdio/allure-reporter": "^9.17.0",
     "@wdio/browser-runner": "^9.12.6",
     "@wdio/cli": "^9.17.1",
@@ -20,7 +21,6 @@
     "@wdio/visual-service": "^6.4.0",
     "allure-commandline": "^2.34.1",
     "chai": "^5.2.0",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "eslint": "^9.31.0"
   }
 }
