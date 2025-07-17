@@ -11,4 +11,10 @@ npx allure generate ./allure-results --clean -o ./allure-report
 Open the allure report
 npx allure open ./allure-report
 
+To run eslint 
+npx eslint src/specs/test.spec.js 
+
+to run prettier 
+npx prettier src/specs/test.spec.js --write
+
 ![alt text](image.png)
