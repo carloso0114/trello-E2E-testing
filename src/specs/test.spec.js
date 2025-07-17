@@ -1,45 +1,42 @@
-const chai = require('chai');
+const chai = require("chai");
 const expect = chai.expect;
 chai.should();
 
-
-const IndexPage = require('./../po/pages/index.page');
-const LoginPage = require('./../po/pages/login.page');
-const DashboardPage = require('./../po/pages/dashboard.page');
+const IndexPage = require("./../po/pages/index.page");
+const LoginPage = require("./../po/pages/login.page");
+const DashboardPage = require("./../po/pages/dashboard.page");
 
 const indexPage = new IndexPage();
 const loginPage = new LoginPage();
-const dashboardPage = new DashboardPage
-const listName = "Sprint Backlog"
-const cardName = "Test card from automation"
-const email = "carlangas_o@hotmail.com"  //update this with your own credentials
-const password = "9545C9545c" //update this with your own credentials
+const dashboardPage = new DashboardPage();
+const listName = "Sprint Backlog";
+const cardName = "Test card from automation";
+const email = "carlangas_o@hotmail.com"; //update this with your own credentials
+const password = "9545C9545c"; //update this with your own credentials
 // when you sign with my credentials a verification email is sent to me... 2FA is deactivated on my account, but still.
 
-
 describe("Trello - BDD Style with Should", () => {
-
-  beforeEach( async() => {
+  beforeEach(async () => {
     await browser.setWindowSize(1920, 1080);
-  })
+  });
 
   it("should open the root page of trello and login with my data", async () => {
-    await indexPage.open()
+    await indexPage.open();
     const loginButton = await indexPage.headermenu.loginLink;
     const loginForm = loginPage.form;
 
     await loginButton.click();
     await loginForm.loginWithEmail(email, password);
 
-    const yourWorkspacesHeader = dashboardPage.boardIndex.yourWorkspacesHeader
-    await yourWorkspacesHeader.waitForDisplayed()
+    const yourWorkspacesHeader = dashboardPage.boardIndex.yourWorkspacesHeader;
+    await yourWorkspacesHeader.waitForDisplayed();
 
     const isDisplayed = await yourWorkspacesHeader.isDisplayed();
     isDisplayed.should.be.true;
-  
+
     const text = await yourWorkspacesHeader.getText();
     text.should.equal("YOUR WORKSPACES");
-  })
+  });
 
   // it("should edit user profile info", async () => {
   //   await dashboardPage.navbar.goToProfileSettings();
@@ -56,11 +53,11 @@ describe("Trello - BDD Style with Should", () => {
 
   // it("should create a new board", async () => {
   //   await dashboardPage.navbar.logoHomeLink.click();
-  //   await dashboardPage.navbar.plusMenuButton.click();   
+  //   await dashboardPage.navbar.plusMenuButton.click();
   //   await dashboardPage.navbar.createBoardButton.click();
-  //   await dashboardPage.navbar.createBoard("My Test board"); 
+  //   await dashboardPage.navbar.createBoard("My Test board");
   //   await dashboardPage.boardHeader.boardTitle.waitForDisplayed();
-    
+
   //   const title = await dashboardPage.boardHeader.boardTitle.getText();
   //   title.should.equal('My Test board');
   // });
@@ -109,5 +106,4 @@ describe("Trello - BDD Style with Should", () => {
   //   await confirmCloseButton.waitForDisplayed();
   //   await confirmCloseButton.click();
   // });
-
-})
+});

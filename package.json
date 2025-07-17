@@ -21,6 +21,7 @@
     "@wdio/visual-service": "^6.4.0",
     "allure-commandline": "^2.34.1",
     "chai": "^5.2.0",
-    "eslint": "^9.31.0"
+    "eslint": "^9.31.0",
+    "prettier": "3.6.2"
   }
 }
