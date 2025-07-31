@@ -21,7 +21,7 @@ exports.config = {
   // of the config file unless it's absolute.
   //
   specs: [
-    '../specs/**/*.js'
+    '../../features/**/*.feature'
   ],
   // Patterns to exclude.
   exclude: [
@@ -127,7 +127,7 @@ exports.config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: 'mocha',
+  framework: 'cucumber',
 
   //
   // The number of times to retry the entire specfile when it fails as a whole
@@ -165,14 +165,14 @@ exports.config = {
     }]
   ],
 
-  // Options to be passed to Mocha.
-  // See the full list at http://mochajs.org/
-  mochaOpts: {
-    ui: 'bdd',
+  //
+  // If you are using Cucumber you need to specify where your step definitions are located.
+  // See also: https://github.com/webdriverio/webdriverio/tree/main/packages/wdio-cucumber-framework#cucumberopts-options
+  cucumberOpts: {
+    require: ['./features/steps-definitions/trello.steps.js'],
+    backtrace: true,
     timeout: 60000,
-    retries: 0,
   },
-
   //
   // =====
   // Hooks
@@ -332,4 +332,4 @@ exports.config = {
   */
   // afterAssertion: function(params) {
   // }
-}
+};

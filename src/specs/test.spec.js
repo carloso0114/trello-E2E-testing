@@ -1,3 +1,4 @@
+const { Given, When, Then, Before } = require('@cucumber/cucumber');
 const chai = require("chai");
 chai.should();
 
