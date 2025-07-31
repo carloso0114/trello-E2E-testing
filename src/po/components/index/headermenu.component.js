@@ -11,7 +11,7 @@ class HeaderMenuComponent {
   }
 
   get loginLink() {
-    return $('a[href*="id.atlassian.com/login"][href*="application=trello"]');
+    return $('a[href*="id.atlassian.com/login"]');
   }
 }
 

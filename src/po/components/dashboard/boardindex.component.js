@@ -1,6 +1,6 @@
 class BoardIndexComponent {
   get yourWorkspacesHeader() {
-    return $('h3.boards-page-section-header-name');
+    return $('//h3[text()="YOUR WORKSPACES"]')
   }
 }
 

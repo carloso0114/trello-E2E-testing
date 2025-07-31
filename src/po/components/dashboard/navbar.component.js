@@ -27,6 +27,10 @@ class NavBarComponent {
     return $('[data-testid="create-board-submit-button"]');
   }
 
+  get closeButton(){
+    return $('[data-testid="CloseIcon"]');
+  }
+
   async goToProfileSettings() {
     await this.userMenuButton.waitForDisplayed();
     await this.userMenuButton.click();
