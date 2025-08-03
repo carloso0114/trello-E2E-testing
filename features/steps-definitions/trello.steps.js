@@ -36,11 +36,10 @@ Then('I should see the {string} header', async (expectedHeader) => {
 
 Given('I am logged in', async () => {
   await indexPage.open();
-  const loginButton = await indexPage.headermenu.loginLink;
-  await loginButton.click();
-  await loginPage.form.loginWithEmail("carlangas_o@hotmail.com", "9545C9545c");
   const yourWorkspacesHeader = dashboardPage.boardIndex.yourWorkspacesHeader;
   await yourWorkspacesHeader.waitForDisplayed();
+  const text = await yourWorkspacesHeader.getText();
+  text.should.equal('YOUR WORKSPACES');
 });
 
 When('I edit my profile username to {string} and bio to {string}', async (username, bio) => {
@@ -58,7 +57,6 @@ Then('I should see a success alert', async () => {
 });
 
 When('I create a new board named {string}', async (boardName) => {
-  await dashboardPage.navbar.closeButton.click();
   await dashboardPage.navbar.plusMenuButton.click();
   await dashboardPage.navbar.createBoardButton.click();
   await dashboardPage.navbar.createBoard(boardName);
@@ -71,16 +69,35 @@ Then('the board title should be {string}', async (expectedTitle) => {
 });
 
 Given('I am on a board', async () => {
-  // Implement navigation if needed, or assume already on board
+  await indexPage.open();
+  const yourWorkspacesHeader = dashboardPage.boardIndex.yourWorkspacesHeader;
+  await yourWorkspacesHeader.waitForDisplayed();
+  const text = await yourWorkspacesHeader.getText();
+  text.should.equal('YOUR WORKSPACES');
+
+  const board = await dashboardPage.boardIndex.findBoard("My Test board")
+  const isBoardExisting = await board.isExisting();
+  isBoardExisting.should.be.true;
+
+  if (isBoardExisting) {
+    await board.click();
+  } else {
+    throw new Error('Board "My Test Board" was not found on the page.');
+  }
 });
 
 When('I create a list called {string}', async (listName) => {
-  const addNewListButtonDisplayed = await dashboardPage.list.addNewListButton.isDisplayed();
-  if (addNewListButtonDisplayed) {
+  const addNewListButtonDisplayed = await dashboardPage.list.addNewListButton;
+  await addNewListButtonDisplayed.waitForExist({ timeout: 5000 });
+  await addNewListButtonDisplayed.waitForDisplayed({ timeout: 5000 });
+
+  if (addNewListButtonDisplayed.isDisplayed) {
+    console.log("Button was found")
     await dashboardPage.list.addNewListButton.click();
     await dashboardPage.list.listNameInput.setValue(listName);
     await dashboardPage.list.addListButtonFinalStep.click();
   } else {
+    console.log("Button was not found")
     await dashboardPage.list.listNameInput.setValue(listName);
     await dashboardPage.list.addListButtonFinalStep.click();
   }
