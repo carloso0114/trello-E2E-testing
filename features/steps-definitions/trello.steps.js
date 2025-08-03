@@ -92,12 +92,10 @@ When('I create a list called {string}', async (listName) => {
   await addNewListButtonDisplayed.waitForDisplayed({ timeout: 5000 });
 
   if (addNewListButtonDisplayed.isDisplayed) {
-    console.log("Button was found")
     await dashboardPage.list.addNewListButton.click();
     await dashboardPage.list.listNameInput.setValue(listName);
     await dashboardPage.list.addListButtonFinalStep.click();
   } else {
-    console.log("Button was not found")
     await dashboardPage.list.listNameInput.setValue(listName);
     await dashboardPage.list.addListButtonFinalStep.click();
   }
